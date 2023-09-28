@@ -17,20 +17,22 @@ var upperCase;
 var numeric;
 var specialChars;
 
-// Functions to determine how many chartacters
-// Confirm confirm the input was a number 
-// TODO: Needs to confirm that the number is between 8-128.
+// Promts user for how many chartacters
+// Confirms confirms the input was a number
+// Confirms that the number is between 8-128.
 function howManyChars(){
   numberOfChars = prompt("How many characters do you want your password to have?");
 
   numCheck = Number(numberOfChars);
-  console.log(typeof(numCheck))
 
   if (isNaN(numCheck)) {
     alert(`${numberOfChars} is not valid number, please try again`)
+  } else if (numberOfChars > 128 || numberOfChars < 8){
+    alert(`Password needs to be at least 8 characters and no more than 128, please try again`)
   } else {
     numberOfChars = numCheck;
-    console.log(`The number of characters selected was ${numCheck}`)
+    // console.log("Length is between 8 and 128")
+    // console.log(`The number of characters selected was ${numCheck}`)
     return numberOfChars;
   }
 }
