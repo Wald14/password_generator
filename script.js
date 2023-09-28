@@ -18,32 +18,41 @@ var numeric;
 var specialChars;
 
 // Functions to determine how many chartacters
-// TODO: Confirm confirm the input was a number 8-128.
+// Confirm confirm the input was a number 
+// TODO: Needs to confirm that the number is between 8-128.
 function howManyChars(){
   numberOfChars = prompt("How many characters do you want your password to have?");
-  console.log(`The number of characters selected was ${numberOfChars}`);
-  return numberOfChars;
+
+  numCheck = Number(numberOfChars);
+  console.log(typeof(numCheck))
+
+  if (isNaN(numCheck)) {
+    alert(`${numberOfChars} is not valid number, please try again`)
+  } else {
+    numberOfChars = numCheck;
+    console.log(`The number of characters selected was ${numCheck}`)
+    return numberOfChars;
+  }
 }
+
 
 // Function to confirm boolean values
 function charTypeConfirmations(){
   lowerCase = confirm("Do you want to include lowercase letters?");
   console.log(`Lowercase letter: ${lowerCase}`);
   upperCase = confirm("Do you want to include uppercase letters?");
-  console.log(`Lowercase letter: ${upperCase}`);
+  console.log(`Uppercase letter: ${upperCase}`);
   numeric = confirm("Do you want to include numeric values?");
-  console.log(`Lowercase letter: ${numeric}`);
+  console.log(`Numeric values: ${numeric}`);
   specialChars = confirm("Do you want to include special characters?");
-  console.log(`Lowercase letter: ${specialChars}`);
+  console.log(`Special characters: ${specialChars}`);
 }
 
 
 // TODO: Generate Password
 // Currently outputs the input values
 function generatePassword(){
-  howManyChars()
-  charTypeConfirmations()
-  var password = numberOfChars + lowerCase + upperCase + numeric + specialChars;
+  password = howManyChars();
   return password;
 }
 
