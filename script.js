@@ -81,26 +81,26 @@ function passwordStart() {
 // Adds the selected character arrays into a master array to be used by the endPassword() funciton
 function addArraysToMaster() {
   if (lowerCase === true) {
-    masterArray = masterArray + lowerArray;
+    masterArray = masterArray.concat(lowerArray);
   }
   if (upperCase === true) {
-    masterArray = masterArray + upperArray;
+    masterArray = masterArray.concat(upperArray);
   }
   if (numeric === true) {
-    masterArray = masterArray + numericArray;
+    masterArray = masterArray.concat(numericArray);
   }
   if (specialChars === true) {
-    masterArray = masterArray + specialCharArray;
+    masterArray = masterArray.concat(specialCharArray);
   }
 }
 
 function passwordEnd(charsNeeded) {
+  var tempPassword = ""
   for ( i = 0; i < charsNeeded; i++) {
-
+    tempPassword = tempPassword + masterArray[generateRandomNumber(0, masterArray.length + 1)]
   }
+  return tempPassword;
 }
-
-
 
 
 
@@ -112,9 +112,8 @@ function generatePassword(){
   }
   charTypeConfirmations();
   addArraysToMaster();
-
   start = passwordStart();
-  console.log(`There are ${start.length} charaters already in the password. ${numberOfChars} are needed in the password. ${numberOfChars-start.length} characters still needed`)
+
   end = passwordEnd(numberOfChars - start.length);
 
 
