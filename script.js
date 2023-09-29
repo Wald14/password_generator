@@ -24,16 +24,19 @@ function howManyChars(){
   numberOfChars = prompt("How many characters do you want your password to have?");
 
   // Converts user promted string and converts to a number
-  numberOfChars = Number(numberOfChars);
+  numCheck = Number(numberOfChars);
 
   // Validates if numberOfChars to meet criteria
-  if ( isNaN(Number(numberOfChars)) || Number.isInteger(numberOfChars) === false || numberOfChars > 128 || numberOfChars < 8 ) {
+  if (numberOfChars === null){
+    return false;
+
+  } else if (isNaN(Number(numCheck)) || Number.isInteger(numCheck) === false || numCheck > 128 || numCheck < 8 ) {
     alert(`${numberOfChars} is not valid number. Make sure the number is a digit that is equal to or between 8 and 128. Please try again`)
     return false;
 
   // If valid, returns the user's number
   } else {
-    return numberOfChars;
+    return numCheck;
   }
 }
 
@@ -72,7 +75,6 @@ function passwordStart() {
   if (specialChars === true) {
     tempPassword += specialCharArray[generateRandomNumber(0, specialCharArray.length - 1)]
   }
-
   return tempPassword;
 }
 
@@ -91,10 +93,9 @@ function addArraysToMaster() {
   if (specialChars === true) {
     masterArray = masterArray.concat(specialCharArray);
   }
-  console.log(masterArray)
 }
 
-
+// Generates the remaining characters of the password, using the master array built from user selections
 function passwordEnd(charsNeeded) {
   var tempPassword = ""
   for ( i = 0; i < charsNeeded; i++) {
@@ -107,9 +108,11 @@ function passwordEnd(charsNeeded) {
 
 // Generate Password
 function generatePassword(){
+
+  // promt user for password length
   userPromt = howManyChars();
   if (userPromt === false) {
-    return;
+    return "";
   }
   charTypeConfirmations();
   addArraysToMaster();
