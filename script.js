@@ -59,6 +59,26 @@ function generateRandomNumber(min,max){
 }
 
 
+// Adds one character to the start of the password for each type wanted
+function passwordStart() {
+  var tempPassword = ""
+  if (lowerCase === true) {
+    tempPassword = tempPassword + lowerArray[generateRandomNumber(0, lowerArray.length + 1)]
+  }
+  if (upperCase === true) {
+    tempPassword = tempPassword + upperArray[generateRandomNumber(0, upperArray.length + 1)]
+  }
+  if (numeric === true) {
+    tempPassword = tempPassword + numericArray[generateRandomNumber(0, numericArray.length + 1)]
+  }
+  if (specialChars === true) {
+    tempPassword = tempPassword + specialCharArray[generateRandomNumber(0, specialCharArray.length + 1)]
+  }
+
+  return tempPassword;
+}
+
+
 // TODO: Generate Password - Currently outputs the input value
 function generatePassword(){
   userPromt = howManyChars();
@@ -66,8 +86,13 @@ function generatePassword(){
     return;
   }
 
-  password = userPromt + "password";
   charTypeConfirmations();
+
+  start = passwordStart();
+  // end = passwordEnd();
+
+
+  var password = start;
   return password;
 }
 

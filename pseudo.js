@@ -14,7 +14,7 @@
     // DONE Confirm numberic (yes=true, no=false)
     // DONE Confirm special characters (yes=true, no=false)
 
-  // Random number generator function that accepts min and max
+  // DONE Random number generator function that accepts min and max
 
   // Generate first few characters by making sure each option is picked
     // for (i=0....) if lowercase = true
@@ -36,5 +36,10 @@
 
 
   // Return password
+var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
-  console.log('\u{005C}')
+function generateRandomNumber(min,max){
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+console.log(lowerArray[generateRandomNumber(0, lowerArray.length + 1)])
