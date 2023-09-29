@@ -44,6 +44,10 @@ function charTypeConfirmations(){
   upperCase = confirm("Do you want to include uppercase letters?");
   numeric = confirm("Do you want to include numeric values?");
   specialChars = confirm("Do you want to include special characters?");
+  if (lowerCase === false && upperCase === false && numeric === false && specialChars === false) {
+    alert("You must select at least one character type. Please select again.");
+    charTypeConfirmations();
+  }
 }
 
 
