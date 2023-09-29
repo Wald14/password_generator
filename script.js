@@ -1,5 +1,7 @@
-// Assignment Code
+// DONT CHANGE Assignment Code
 var generateBtn = document.querySelector("#generate");
+
+
 
 // Establishing Global Variables
 var numberOfChars;
@@ -63,16 +65,16 @@ function generateRandomNumber(min,max){
 function passwordStart() {
   var tempPassword = ""
   if (lowerCase === true) {
-    tempPassword = tempPassword + lowerArray[generateRandomNumber(0, lowerArray.length + 1)]
+    tempPassword = tempPassword + lowerArray[generateRandomNumber(0, lowerArray.length - 1)]
   }
   if (upperCase === true) {
-    tempPassword = tempPassword + upperArray[generateRandomNumber(0, upperArray.length + 1)]
+    tempPassword = tempPassword + upperArray[generateRandomNumber(0, upperArray.length - 1)]
   }
   if (numeric === true) {
-    tempPassword = tempPassword + numericArray[generateRandomNumber(0, numericArray.length + 1)]
+    tempPassword = tempPassword + numericArray[generateRandomNumber(0, numericArray.length - 1)]
   }
   if (specialChars === true) {
-    tempPassword = tempPassword + specialCharArray[generateRandomNumber(0, specialCharArray.length + 1)]
+    tempPassword = tempPassword + specialCharArray[generateRandomNumber(0, specialCharArray.length - 1)]
   }
 
   return tempPassword;
@@ -80,7 +82,7 @@ function passwordStart() {
 
 // Adds the selected character arrays into a master array to be used by the endPassword() funciton
 function addArraysToMaster() {
-  masterArray = []
+  masterArray = [];
   if (lowerCase === true) {
     masterArray = masterArray.concat(lowerArray);
   }
@@ -96,17 +98,18 @@ function addArraysToMaster() {
   console.log(masterArray)
 }
 
+
 function passwordEnd(charsNeeded) {
   var tempPassword = ""
   for ( i = 0; i < charsNeeded; i++) {
-    tempPassword = tempPassword + masterArray[generateRandomNumber(0, masterArray.length + 1)]
+    tempPassword = tempPassword + masterArray[generateRandomNumber(0, masterArray.length - 1)]
   }
   return tempPassword;
 }
 
 
 
-// TODO: Generate Password - Currently outputs the input value
+// Generate Password
 function generatePassword(){
   userPromt = howManyChars();
   if (userPromt === false) {
@@ -118,13 +121,12 @@ function generatePassword(){
 
   end = passwordEnd(numberOfChars - start.length);
 
-
   var password = start + end;
   return password;
 }
 
 
-// Write password to the #password input
+// DONT CHANGE Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -133,5 +135,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// DONT CHANGE Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
