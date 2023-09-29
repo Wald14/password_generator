@@ -80,6 +80,7 @@ function passwordStart() {
 
 // Adds the selected character arrays into a master array to be used by the endPassword() funciton
 function addArraysToMaster() {
+  masterArray = []
   if (lowerCase === true) {
     masterArray = masterArray.concat(lowerArray);
   }
@@ -92,6 +93,7 @@ function addArraysToMaster() {
   if (specialChars === true) {
     masterArray = masterArray.concat(specialCharArray);
   }
+  console.log(masterArray)
 }
 
 function passwordEnd(charsNeeded) {
