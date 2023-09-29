@@ -1,23 +1,18 @@
 // Pseudo Code
 
-  // Promt user for number (8-128)
+  // DONE Promt user for number (8-128)
 
-  // Validate number
-    // greater then 128? Not valid
-    // less then 8? Not valid
-    // isInt() is false (not a whole number)? Not valid
-    // isNaN() is true (not a number)? Not valid
+  // DONE Validate number
+    // DONE greater then 128? Not valid
+    // DONE less then 8? Not valid
+    // DONE isInt() is false (not a whole number)? Not valid
+    // DONE isNaN() is true (not a number)? Not valid
 
-  // Promt user for which characters to include (lowercase, uppercase, numeric, and/or special characters)
-    // Confirm lowercase (yes=true, no=false)
-    // Confirm uppercase (yes=true, no=false)
-    // Confirm numberic (yes=true, no=false)
-    // Confirm special characters (yes=true, no=false)
-
-  // Combine character arrays that are true
-    // concat() method will merge two or more arrays and not change the existing arrays
-    // array needs to contain all possible options
-
+  // DONE Promt user for which characters to include (lowercase, uppercase, numeric, and/or special characters)
+    // DONE Confirm lowercase (yes=true, no=false)
+    // DONE Confirm uppercase (yes=true, no=false)
+    // DONE Confirm numberic (yes=true, no=false)
+    // DONE Confirm special characters (yes=true, no=false)
 
   // Random number generator function that accepts min and max
 
@@ -29,6 +24,10 @@
       // password = password + random letter from special character array, otherwise skip
       // tempPass = numeric value based off current password length OR how many true statments
 
+  // Combine character arrays that are true
+    // concat() method will merge two or more arrays and not change the existing arrays
+    // array needs to contain all possible options
+
   // Generate remaining password with combined array
     // for (i=0, i<password.length - 1 - tempPass.length, i++) and have it randomly pull a value from an array
       // array needs to contain all possible options
@@ -38,3 +37,4 @@
 
   // Return password
 
+  console.log('\u{005C}')
