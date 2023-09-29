@@ -33,29 +33,21 @@ function howManyChars(){
 
   // If valid, returns the user's number
   } else {
-    console.log(`The number of characters selected was ${numberOfChars}`)
     return numberOfChars;
   }
 }
 
 
-// Function to confirm boolean values
+// Set appropriate boolean value based on if the user wants characters from said array or not.
 function charTypeConfirmations(){
   lowerCase = confirm("Do you want to include lowercase letters?");
-  console.log(`Lowercase letter: ${lowerCase}`);
-
   upperCase = confirm("Do you want to include uppercase letters?");
-  console.log(`Uppercase letter: ${upperCase}`);
-
   numeric = confirm("Do you want to include numeric values?");
-  console.log(`Numeric values: ${numeric}`);
-
   specialChars = confirm("Do you want to include special characters?");
-  console.log(`Special characters: ${specialChars}`);
 }
 
 
-// Random Number Generator
+// Random Number Generator that accepts a min and max value. Usually 0 and either string.length - 1 OR array.length - 1.
 function generateRandomNumber(min,max){
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -65,16 +57,16 @@ function generateRandomNumber(min,max){
 function passwordStart() {
   var tempPassword = ""
   if (lowerCase === true) {
-    tempPassword = tempPassword + lowerArray[generateRandomNumber(0, lowerArray.length - 1)]
+    tempPassword += lowerArray[generateRandomNumber(0, lowerArray.length - 1)]
   }
   if (upperCase === true) {
-    tempPassword = tempPassword + upperArray[generateRandomNumber(0, upperArray.length - 1)]
+    tempPassword += upperArray[generateRandomNumber(0, upperArray.length - 1)]
   }
   if (numeric === true) {
-    tempPassword = tempPassword + numericArray[generateRandomNumber(0, numericArray.length - 1)]
+    tempPassword += numericArray[generateRandomNumber(0, numericArray.length - 1)]
   }
   if (specialChars === true) {
-    tempPassword = tempPassword + specialCharArray[generateRandomNumber(0, specialCharArray.length - 1)]
+    tempPassword += specialCharArray[generateRandomNumber(0, specialCharArray.length - 1)]
   }
 
   return tempPassword;
@@ -102,7 +94,7 @@ function addArraysToMaster() {
 function passwordEnd(charsNeeded) {
   var tempPassword = ""
   for ( i = 0; i < charsNeeded; i++) {
-    tempPassword = tempPassword + masterArray[generateRandomNumber(0, masterArray.length - 1)]
+    tempPassword += masterArray[generateRandomNumber(0, masterArray.length - 1)]
   }
   return tempPassword;
 }
@@ -118,9 +110,7 @@ function generatePassword(){
   charTypeConfirmations();
   addArraysToMaster();
   start = passwordStart();
-
   end = passwordEnd(numberOfChars - start.length);
-
   var password = start + end;
   return password;
 }
