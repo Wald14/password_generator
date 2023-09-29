@@ -36,10 +36,3 @@
 
 
   // Return password
-var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-
-function generateRandomNumber(min,max){
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-console.log(lowerArray[generateRandomNumber(0, lowerArray.length + 1)])

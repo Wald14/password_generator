@@ -78,6 +78,31 @@ function passwordStart() {
   return tempPassword;
 }
 
+// Adds the selected character arrays into a master array to be used by the endPassword() funciton
+function addArraysToMaster() {
+  if (lowerCase === true) {
+    masterArray = masterArray + lowerArray;
+  }
+  if (upperCase === true) {
+    masterArray = masterArray + upperArray;
+  }
+  if (numeric === true) {
+    masterArray = masterArray + numericArray;
+  }
+  if (specialChars === true) {
+    masterArray = masterArray + specialCharArray;
+  }
+}
+
+function passwordEnd(charsNeeded) {
+  for ( i = 0; i < charsNeeded; i++) {
+
+  }
+}
+
+
+
+
 
 // TODO: Generate Password - Currently outputs the input value
 function generatePassword(){
@@ -85,19 +110,17 @@ function generatePassword(){
   if (userPromt === false) {
     return;
   }
-
   charTypeConfirmations();
+  addArraysToMaster();
 
   start = passwordStart();
-  // end = passwordEnd();
+  console.log(`There are ${start.length} charaters already in the password. ${numberOfChars} are needed in the password. ${numberOfChars-start.length} characters still needed`)
+  end = passwordEnd(numberOfChars - start.length);
 
 
-  var password = start;
+  var password = start + end;
   return password;
 }
-
-
-
 
 
 // Write password to the #password input
