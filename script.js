@@ -1,6 +1,20 @@
-// DONT CHANGE Assignment Code
+// STARTER CODE (DONT CHANGE) Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// STARTER CODE (DONT CHANGE) Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// STARTER CODE (DONT CHANGE) Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+// MY CODE BELOW
 
 
 // Establishing Global Variables
@@ -19,7 +33,7 @@ var specialCharArray = [" ","!",'"', "#", "$", "%", "&", "'", "(", ")", "*", "+"
 // Establishing a Global Master Array that is blank by default
 var masterArray = []
 
-// Promts user for how many characters
+// Promt user for password length
 function howManyChars(){
   numberOfChars = prompt("How many characters do you want your password to have?");
 
@@ -41,15 +55,27 @@ function howManyChars(){
 }
 
 
-// Set appropriate boolean value based on if the user wants characters from said array or not.
-function charTypeConfirmations(){
+// Prompt user for character type and if yes, add to master array.
+function charType() {
   lowerCase = confirm("Do you want to include lowercase letters?");
+  if (lowerCase === true) {
+    masterArray = masterArray.concat(lowerArray);
+  }
   upperCase = confirm("Do you want to include uppercase letters?");
+  if (upperCase === true) {
+    masterArray = masterArray.concat(upperArray);
+  }
   numeric = confirm("Do you want to include numeric values?");
+  if (numeric === true) {
+    masterArray = masterArray.concat(numericArray);
+  }
   specialChars = confirm("Do you want to include special characters?");
+  if (specialChars === true) {
+    masterArray = masterArray.concat(specialCharArray);
+  }
   if (lowerCase === false && upperCase === false && numeric === false && specialChars === false) {
     alert("You must select at least one character type. Please select again.");
-    charTypeConfirmations();
+    charType();
   }
 }
 
@@ -78,22 +104,6 @@ function passwordStart() {
   return tempPassword;
 }
 
-// Adds the selected character arrays into a master array to be used by the endPassword() funciton
-function addArraysToMaster() {
-  masterArray = [];
-  if (lowerCase === true) {
-    masterArray = masterArray.concat(lowerArray);
-  }
-  if (upperCase === true) {
-    masterArray = masterArray.concat(upperArray);
-  }
-  if (numeric === true) {
-    masterArray = masterArray.concat(numericArray);
-  }
-  if (specialChars === true) {
-    masterArray = masterArray.concat(specialCharArray);
-  }
-}
 
 // Generates the remaining characters of the password, using the master array built from user selections
 function passwordEnd(charsNeeded) {
@@ -104,33 +114,27 @@ function passwordEnd(charsNeeded) {
   return tempPassword;
 }
 
-
-
 // Generate Password
 function generatePassword(){
 
   // promt user for password length
-  userPromt = howManyChars();
+  var userPromt = howManyChars();
+
+  // if user "cancels", no password generatered
   if (userPromt === false) {
     return "";
   }
-  charTypeConfirmations();
-  addArraysToMaster();
-  start = passwordStart();
-  end = passwordEnd(numberOfChars - start.length);
+
+  // promt user for character types and build master character array
+  charType();
+
+  // Add one type of each character to the start of the password
+  var start = passwordStart();
+
+  // Finish remaining password
+  var end = passwordEnd(numberOfChars - start.length);
+
+  // Return full password
   var password = start + end;
   return password;
 }
-
-
-// DONT CHANGE Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
-
-// DONT CHANGE Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
