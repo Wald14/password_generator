@@ -14,8 +14,7 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 
-// MY CODE BELOW
-
+// ----- MY CODE -----
 
 // Establishing Global Variables
 var numberOfChars;
@@ -24,14 +23,14 @@ var upperCase;
 var numeric;
 var specialChars;
 
+
 // Establishing Global Arrays
 var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 var upperArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 var numericArray = [0, 1, 2, 3, 4, 5, 6, 7, 8 , 9]
 var specialCharArray = [" ","!",'"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\u{005C}", "]", "^", "_", "`", "{", "|", "}", "~"]
-
-// Establishing a Global Master Array that is blank by default
 var masterArray = []
+
 
 // Promt user for password length
 function howManyChars(){
@@ -83,7 +82,7 @@ function charType() {
 
 // Random Number Generator that accepts a min and max value. Usually 0 and either string.length - 1 OR array.length - 1.
 function generateRandomNumber(min,max){
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 
@@ -91,16 +90,16 @@ function generateRandomNumber(min,max){
 function passwordStart() {
   var tempPassword = ""
   if (lowerCase === true) {
-    tempPassword += lowerArray[generateRandomNumber(0, lowerArray.length - 1)]
+    tempPassword += lowerArray[generateRandomNumber(0, lowerArray.length)]
   }
   if (upperCase === true) {
-    tempPassword += upperArray[generateRandomNumber(0, upperArray.length - 1)]
+    tempPassword += upperArray[generateRandomNumber(0, upperArray.length)]
   }
   if (numeric === true) {
-    tempPassword += numericArray[generateRandomNumber(0, numericArray.length - 1)]
+    tempPassword += numericArray[generateRandomNumber(0, numericArray.length)]
   }
   if (specialChars === true) {
-    tempPassword += specialCharArray[generateRandomNumber(0, specialCharArray.length - 1)]
+    tempPassword += specialCharArray[generateRandomNumber(0, specialCharArray.length)]
   }
   return tempPassword;
 }
@@ -110,32 +109,22 @@ function passwordStart() {
 function passwordEnd(charsNeeded) {
   var tempPassword = ""
   for ( i = 0; i < charsNeeded; i++) {
-    tempPassword += masterArray[generateRandomNumber(0, masterArray.length - 1)]
+    tempPassword += masterArray[generateRandomNumber(0, masterArray.length)]
   }
   return tempPassword;
 }
 
+
 // Generate Password
 function generatePassword(){
-
-  // promt user for password length
   var userPromt = howManyChars();
-
-  // if user "cancels", no password generatered
+  // if user "cancels" instead of entering a value, no password generatered
   if (userPromt === false) {
     return "";
   }
-
-  // promt user for character types and build master character array
   charType();
-
-  // Add one type of each character to the start of the password
   var start = passwordStart();
-
-  // Finish remaining password
   var end = passwordEnd(numberOfChars - start.length);
-
-  // Return full password
   var password = start + end;
   return password;
 }
