@@ -1,7 +1,7 @@
 # Password Generator
 
 ## Webpage Description
-This is a password generator. When the user clicks on the "Generate Password" button, they are presented with a series of prompts for password criteria withc include:
+This is a password generator. When the user clicks on the "Generate Password" button, they are presented with a series of prompts for password criteria which include:
 - Picking a password length of at least 8 and no more than 128 characters
 - Include lowercase characters?
 - Include uppercase characters?
@@ -22,11 +22,12 @@ The password is then written to the page inside of the box above the "Generate P
 
 
 ## Link to Website
-The deployed website can be accesed [here](https://wald14.github.io/password_generator/)
+The deployed website can be accessed [here](https://wald14.github.io/password_generator/)
 
 
 ## Acknowledgements
 - Gary Almes - provided the class with the main structure of the function generateRandomNumber() during a class demo.
+- Bootcamp Assignment Team - provided the completed index.html and style.css. Also included was a script.js file with some starter code that would make the button function, display the final password, and call a function to be made by me called generatePassword().
 
 
 ## Site Preview
