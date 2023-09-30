@@ -57,6 +57,7 @@ function howManyChars(){
 
 // Prompt user for character type and if yes, add to master array.
 function charType() {
+  masterArray = [];
   lowerCase = confirm("Do you want to include lowercase letters?");
   if (lowerCase === true) {
     masterArray = masterArray.concat(lowerArray);
